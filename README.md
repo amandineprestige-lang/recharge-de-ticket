@@ -1,13 +1,22 @@
-# Portail indépendant des recharges
+# RECHARGE LE TICKET
 
-Petit site React + Vite, prêt à être ouvert et modifié dans VS Code. Le formulaire de cette version accepte uniquement un exemple fictif au format `DEMO-XXXX-XXXX`. Il ne collecte ni n'envoie de PIN, de code de recharge, d'identifiant ou d'adresse e-mail.
+Site d’information indépendant sur les recharges prépayées, réalisé avec React et Vite. La page d’accueil présente des repères généraux, des conseils de sécurité et un formulaire local d’orientation. Le formulaire n’enregistre et ne transmet aucun choix, et ne demande aucun PIN ni code de recharge.
 
-## Ouvrir et lancer le site
+## Démarrage
 
-1. Ouvrez le dossier du projet dans VS Code.
-2. Dans le terminal intégré, lancez `npm install`.
-3. Lancez `npm run dev`, puis ouvrez l'adresse locale indiquée dans le terminal.
+\`\`\`powershell
+npm install
+npm run dev
+\`\`\`
 
-Pour créer la version de production, lancez `npm run build`. Le dossier généré s'appelle `dist`.
+Build de production : \`npm run build\` — aperçu : \`npm run preview\`.
 
-Le titre et la description du navigateur se trouvent dans `index.html`. Le contenu du formulaire est dans `src/pages/Home.jsx`, et les couleurs et la mise en page sont dans `src/styles.css`. Le site est indépendant et ne vérifie pas de tickets.
+## Structure
+
+- \`src/pages/Home.jsx\` : contenu de la page d’accueil et formulaire d’orientation.
+- \`src/components/Navbar.jsx\`, \`Logo.jsx\`, \`HeroScene.jsx\`, \`Footer.jsx\` : navigation et éléments visuels.
+- \`src/styles.css\` : palette, mise en page et adaptation mobile.
+- \`index.html\` : titre et description du site.
+
+Le site ne vérifie pas la validité d’un ticket et n’est affilié à aucun émetteur mentionné.
+
