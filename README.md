@@ -1,53 +1,40 @@
-# TicketSûr — site de démonstration (React + Vite)
+# Portail de démonstration pour comprendre les recharges en toute sécurité
 
-Site 100 % frontend : pas de backend, pas de base de données. Les formulaires envoient des informations **fictives et non sensibles** par e-mail via EmailJS.
-
-> Aucun champ pour PIN, code de recharge ou cryptogramme. Aucune vérification officielle n'est effectuée ni simulée.
+Site pédagogique React + Vite. Il présente des informations générales et un parcours de démonstration. Il ne vérifie aucun ticket, ne contacte aucun émetteur et ne consulte aucun solde. Le formulaire n'accepte que des références fictives commençant par `DEMO-`.
 
 ## Démarrage (PowerShell)
 ```powershell
 npm install
-Copy-Item .env.example .env   # puis renseignez vos identifiants EmailJS
+Copy-Item .env.example .env   # puis renseignez les identifiants EmailJS si l'envoi de démonstration est souhaité
 npm run dev
 ```
 Build de production : `npm run build` — aperçu : `npm run preview`.
 
-## Configuration EmailJS
-1. Créez un compte sur https://www.emailjs.com, ajoutez un **Email Service** (Gmail, Outlook…) et définissez l'adresse de réception.
-2. Créez un **Template** avec ces variables : `{{ticket_type}}`, `{{amount}}`, `{{purchase_date}}`, `{{demo_reference}}`, `{{contact_email}}`, `{{sent_at}}`.
-3. Copiez le Service ID, le Template ID et la Public Key dans `.env` :
+## Envoi facultatif de messages de démonstration
+Le projet peut envoyer par EmailJS les données fictives fournies dans le formulaire. Aucun code PIN ou code de recharge ne doit être collecté.
+1. Créez un compte EmailJS et configurez un service et un modèle d'e-mail.
+2. Le modèle peut utiliser : `{{ticket_type}}`, `{{amount}}`, `{{purchase_date}}`, `{{demo_reference}}`, `{{contact_email}}`, `{{sent_at}}`.
+3. Ajoutez les paramètres suivants dans `.env` en local ou dans les variables Vercel :
 ```
 VITE_EMAILJS_SERVICE_ID=
 VITE_EMAILJS_TEMPLATE_ID=
 VITE_EMAILJS_PUBLIC_KEY=
+VITE_SUPPORT_EMAIL=
 ```
-Tant que ces trois valeurs sont vides, le formulaire affiche que l'envoi n'est pas configuré et n'envoie rien.
-Conseil : dans EmailJS, limitez les domaines autorisés à votre site Vercel.
+Si les paramètres EmailJS ne sont pas renseignés, l'envoi est désactivé. La clé EmailJS utilisée par le navigateur est une clé publique; n'ajoutez aucun secret privé dans une variable `VITE_`. Limitez les domaines autorisés dans EmailJS à votre domaine de déploiement.
 
-## Protections
-Validation des champs, référence obligatoirement au format `DEMO-XXXX-XXXX`, champ piège anti-robots, délai d'1 minute entre envois et 3 envois/heure (côté navigateur — à compléter par les limites de votre compte EmailJS).
+## Protections de la démo
+Validation des champs, référence obligatoire au format `DEMO-XXXX-XXXX`, champ piège anti-robots et limitation locale des envois. Ces limites côté navigateur complètent les paramètres de protection du compte EmailJS et ne remplacent pas une limitation côté serveur.
 
 ## Déploiement Vercel
-1. Poussez le projet sur GitHub (`.env` est ignoré par `.gitignore`).
-2. Sur Vercel : **Add New → Project**, importez le dépôt (preset Vite détecté : build `npm run build`, sortie `dist`).
-3. **Settings → Environment Variables** : ajoutez `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY` (et `VITE_SUPPORT_EMAIL` si souhaité), puis redéployez.
-4. `vercel.json` redirige toutes les routes vers `index.html` pour React Router.
+Importez le dépôt dans Vercel. Le build utilise `npm run build` et le dossier de sortie `dist`. Si l'envoi facultatif est utilisé, ajoutez les variables EmailJS dans **Settings → Environment Variables**, puis redéployez. `vercel.json` redirige les routes vers `index.html` pour React Router.
 
 ## Structure
 ```
 src/
-  components/  Navbar, Footer, Logo, Icons
-  pages/       Home, Demo
-  lib/         sendDemo.js (validation, anti-abus, EmailJS)
+  components/  Navigation, footer, logo et illustrations
+  pages/       Accueil et parcours de démonstration
+  lib/         Validation, limites locales et envoi EmailJS facultatif
 ```
 
-## Recevoir les messages dans Gmail (EmailJS)
-1. emailjs.com → **Email Services → Add New Service → Gmail** → connectez votre compte Gmail → notez le **Service ID**.
-2. **Email Templates → Create New Template** :
-   - **To Email** : votre adresse Gmail (c'est ici que vous recevrez les messages)
-   - **Subject** : `Nouvelle demande de démonstration TicketSûr`
-   - **Reply To** : `{{contact_email}}`
-   - **Contenu** : Type : `{{ticket_type}}` / Montant : `{{amount}}` / Date d'achat : `{{purchase_date}}` / Référence : `{{demo_reference}}` / E-mail : `{{contact_email}}` / Envoyé le : `{{sent_at}}`
-   - Enregistrez et notez le **Template ID**.
-3. **Account → General** : copiez la **Public Key**.
-4. Collez les trois valeurs dans `.env`, puis relancez `npm run dev` (Ctrl + C, puis de nouveau la commande).
+Les marques PCS, Transcash et Neosurf sont mentionnées à titre informatif uniquement; ce portail est indépendant et n'est affilié à aucun émetteur.
