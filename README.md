@@ -1,6 +1,6 @@
 # RECHARGE LE TICKET
 
-Site d’information indépendant sur les recharges prépayées, réalisé avec React, React Router et Vite. L’accueil présente des repères généraux et des conseils de sécurité. La page `/suivi` explique comment contacter le service concerné. Aucun formulaire de demande n’est envoyé ou enregistré, et aucun PIN ni code de recharge n’est demandé.
+Site d’information indépendant sur les recharges prépayées, réalisé avec React, React Router et Vite. L’accueil présente des repères généraux et des conseils de sécurité. La page `/suivi` donne des conseils d’assistance et la page `/recharge?type=pcs`, `/recharge?type=transcash` ou `/recharge?type=neosurf` affiche des informations générales selon le choix. Aucun code PIN, code de recharge ou renseignement personnel n’est demandé ni transmis.
 
 ## Démarrage
 
