@@ -1,50 +1,40 @@
-import { useEffect, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { useState } from 'react'
 import Logo from './Logo.jsx'
-import { IconMenu, IconClose } from './Icons.jsx'
 
 const links = [
-  { to: '/', label: 'Accueil', end: true },
-  { to: '/demonstration', label: 'La démonstration' },
-  { to: '/#service', label: 'Notre approche' },
-  { to: '/#paiements', label: 'Types de recharge' },
-  { to: '/#securite', label: 'Conseils' },
-  { to: '/#fonctionnement', label: 'Étapes' },
-  { to: '/#assistance', label: 'Contact' },
+  { href: '#accueil', label: 'Accueil' },
+  { href: '#recharges', label: 'Les recharges' },
+  { href: '#conseils', label: 'Conseils' },
+  { href: '#orientation', label: 'Orientation' },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const [progress, setProgress] = useState(0)
-  useEffect(() => {
-    const onScroll = () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight
-      setProgress(h > 0 ? window.scrollY / h : 0)
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
   const close = () => setOpen(false)
+
   return (
-    <header className="navbar">
-      <div className="scroll-progress" style={{ transform: `scaleX(${progress})` }} />
+    <header className="site-header">
       <div className="container nav-inner">
         <Logo />
-        <button className="nav-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-label="Menu">
-          {open ? <IconClose /> : <IconMenu />}
+        <button
+          className="nav-toggle"
+          type="button"
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-controls="primary-navigation"
+          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+        >
+          <span />
+          <span />
         </button>
-        <nav className={`nav-links ${open ? 'open' : ''}`} aria-label="Navigation principale">
-          {links.map((l) =>
-            l.to.includes('#') ? (
-              <Link key={l.to} to={l.to} onClick={close}>{l.label}</Link>
-            ) : (
-              <NavLink key={l.to} to={l.to} end={l.end} onClick={close}>{l.label}</NavLink>
-            )
-          )}
-          <Link to="/demonstration" className="btn btn-primary btn-sm" onClick={close}>Voir la démo</Link>
+        <nav id="primary-navigation" className={open ? 'nav-list is-open' : 'nav-list'} aria-label="Navigation principale">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} onClick={close}>{link.label}</a>
+          ))}
+          <a className="nav-cta" href="#orientation" onClick={close}>Trouver un repère</a>
         </nav>
       </div>
     </header>
   )
 }
+
