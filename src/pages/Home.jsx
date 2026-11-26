@@ -1,83 +1,129 @@
 import { useState } from 'react'
+import HeroScene from '../components/HeroScene.jsx'
+import { IconAlert, IconCard, IconEye, IconLock, IconShield, IconTicket } from '../components/Icons.jsx'
 
-const referencePattern = /^DEMO-[A-Z0-9]{4}-[A-Z0-9]{4}$/
+const rechargeTypes = [
+  { name: 'PCS', tone: 'coral', text: 'Repères généraux pour mieux comprendre les recharges et leurs usages.' },
+  { name: 'Transcash', tone: 'blue', text: 'Quelques conseils simples pour garder votre ticket et vos informations en sécurité.' },
+  { name: 'Neosurf', tone: 'green', text: 'Des informations pratiques pour utiliser votre recharge avec prudence.' },
+  { name: 'Autre recharge', tone: 'gold', text: 'Les mêmes bons réflexes s’appliquent aux autres tickets prépayés.' },
+]
+
+const advice = {
+  comprendre: 'Consultez les informations de l’émetteur pour connaître les conditions et les usages de votre recharge.',
+  securite: 'Ne partagez jamais le code inscrit sur un ticket. Une personne qui le possède peut parfois utiliser son solde.',
+  assistance: 'Pour une question sur un ticket précis, adressez-vous à l’émetteur par ses canaux de contact habituels.',
+}
 
 export default function Home() {
-  const [ticketType, setTicketType] = useState('')
-  const [amount, setAmount] = useState('')
-  const [reference, setReference] = useState('')
+  const [type, setType] = useState('')
+  const [topic, setTopic] = useState('')
   const [message, setMessage] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault()
-
-    if (!ticketType || !amount || !referencePattern.test(reference.trim().toUpperCase())) {
-      setMessage('Choisissez un type, indiquez un montant fictif et utilisez une référence DEMO-XXXX-XXXX.')
+    if (!type || !topic) {
+      setMessage('Choisissez un type de recharge et le sujet qui vous intéresse.')
       return
     }
-
-    setMessage('Parcours terminé. Les informations restent dans cette page : rien n’a été envoyé et aucun ticket réel n’a été vérifié.')
+    setMessage(advice[topic])
   }
 
   return (
-    <main className="page-shell">
-      <header className="topbar">
-        <a className="brand" href="/" aria-label="Accueil">
-          <span className="brand-mark" aria-hidden="true">✓</span>
-          <span>Portail <b>recharges</b></span>
-        </a>
-        <span className="independent-label">Site indépendant</span>
-      </header>
-
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow">Information pratique</p>
-          <h1>Comprendre les recharges prépayées, simplement.</h1>
-          <p className="intro">Découvrez un parcours d’exemple avec des informations inventées. N’entrez jamais un code PIN ou un code de recharge réel.</p>
-        </div>
-
-        <div className="ticket-illustration" aria-hidden="true">
-          <div className="ticket-top"><span>EXEMPLE FICTIF</span><span>•••</span></div>
-          <div className="ticket-code">DEMO-••••-••••</div>
-          <div className="ticket-bottom"><span>Montant d’exemple</span><b>50 €</b></div>
-        </div>
-      </section>
-
-      <section className="form-section" aria-labelledby="form-title">
-        <div className="section-heading">
-          <p className="eyebrow">Parcours fictif</p>
-          <h2 id="form-title">Essayez le formulaire</h2>
-          <p>Seules les références fictives commençant par DEMO sont acceptées.</p>
-        </div>
-
-        <form className="entry-form" onSubmit={handleSubmit}>
-          <label htmlFor="ticket-type">Type de recharge</label>
-          <select id="ticket-type" value={ticketType} onChange={(event) => setTicketType(event.target.value)} required>
-            <option value="">Choisir un exemple</option>
-            <option value="PCS">PCS</option>
-            <option value="Transcash">Transcash</option>
-            <option value="Neosurf">Neosurf</option>
-            <option value="Autre">Autre</option>
-          </select>
-
-          <label htmlFor="amount">Montant fictif</label>
-          <div className="amount-field">
-            <input id="amount" type="number" min="1" max="1000" step="1" placeholder="50" value={amount} onChange={(event) => setAmount(event.target.value)} required />
-            <span>€</span>
+    <main>
+      <section className="hero" id="accueil">
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow"><span className="eyebrow-mark" /> Information indépendante</p>
+            <h1>Les recharges prépayées, en toute simplicité.</h1>
+            <p className="hero-lead">Des informations claires pour comprendre les tickets prépayés et adopter les bons réflexes de sécurité.</p>
+            <div className="hero-actions">
+              <a className="button button-primary" href="#recharges">Découvrir les recharges</a>
+              <a className="button button-secondary" href="#conseils">Conseils de sécurité</a>
+            </div>
+            <p className="independent-note">Recharge le Ticket est un service d’information indépendant. Aucune vérification de solde n’est effectuée.</p>
           </div>
-
-          <label htmlFor="reference">Référence de test</label>
-          <input id="reference" type="text" autoComplete="off" maxLength={14} placeholder="DEMO-AB12-CD34" value={reference} onChange={(event) => setReference(event.target.value.toUpperCase())} required />
-          <p className="field-hint">Inventez une référence. Aucun code réel ne doit être saisi.</p>
-
-          <button type="submit">Continuer</button>
-          {message && <p className="result-message" role="status">{message}</p>}
-        </form>
+          <HeroScene />
+        </div>
       </section>
 
-      <footer className="footer">
-        Cette page est un exemple indépendant. Elle ne vérifie aucun ticket et ne transmet aucune information.
-      </footer>
+      <section className="quick-points" aria-label="Nos principes">
+        <div className="container quick-points-grid">
+          <div><IconEye /><span>Informations faciles à comprendre</span></div>
+          <div><IconShield /><span>Conseils axés sur la sécurité</span></div>
+          <div><IconLock /><span>Aucun code secret demandé</span></div>
+        </div>
+      </section>
+
+      <section className="section recharge-section" id="recharges">
+        <div className="container">
+          <div className="section-heading">
+            <p className="eyebrow">Les moyens prépayés</p>
+            <h2>Choisissez votre type de recharge</h2>
+            <p>Retrouvez quelques repères généraux. Pour les conditions propres à un ticket, référez-vous à son émetteur.</p>
+          </div>
+          <div className="recharge-grid">
+            {rechargeTypes.map((item) => (
+              <article className="recharge-card" key={item.name}>
+                <div className={'recharge-icon ' + item.tone}><IconCard width="24" height="24" /></div>
+                <h3>{item.name}</h3>
+                <p>{item.text}</p>
+                <a href="#orientation" onClick={() => setType(item.name === 'Autre recharge' ? 'autre' : item.name)}>Voir les repères <span aria-hidden="true">→</span></a>
+              </article>
+            ))}
+          </div>
+          <p className="brand-disclosure">Les noms de produits sont mentionnés uniquement pour orienter les visiteurs. Recharge le Ticket n’est affilié à aucun émetteur.</p>
+        </div>
+      </section>
+
+      <section className="safety-section" id="conseils">
+        <div className="container safety-layout">
+          <div className="safety-copy">
+            <p className="eyebrow">Quelques réflexes utiles</p>
+            <h2>Gardez le contrôle de vos informations.</h2>
+            <p>Un code de recharge est confidentiel. Traitez-le comme un moyen de paiement et ne le communiquez jamais à une personne inconnue.</p>
+            <a className="text-link" href="#orientation">Trouver un conseil adapté <span aria-hidden="true">→</span></a>
+          </div>
+          <div className="safety-list">
+            <article><span className="safety-number">01</span><div><h3>Protégez votre code</h3><p>Ne l’envoyez pas par message, e-mail ou téléphone.</p></div></article>
+            <article><span className="safety-number">02</span><div><h3>Vérifiez qui vous contacte</h3><p>Méfiez-vous des demandes urgentes ou des promesses de paiement.</p></div></article>
+            <article><span className="safety-number">03</span><div><h3>Demandez de l’aide à la bonne source</h3><p>Contactez l’émetteur via ses coordonnées habituelles pour un ticket réel.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section orientation-section" id="orientation">
+        <div className="container orientation-layout">
+          <div className="orientation-intro">
+            <p className="eyebrow">Besoin d’un repère ?</p>
+            <h2>Indiquez ce que vous cherchez.</h2>
+            <p>Ce court formulaire affiche un conseil général sur cette page. Vos choix ne sont ni enregistrés ni envoyés.</p>
+            <div className="orientation-promise"><IconLock width="18" height="18" /> N’indiquez jamais de code, PIN ou numéro confidentiel.</div>
+          </div>
+          <form className="orientation-form" onSubmit={handleSubmit}>
+            <label htmlFor="recharge-type">Type de recharge</label>
+            <select id="recharge-type" value={type} onChange={(event) => setType(event.target.value)} required>
+              <option value="">Choisir une option</option>
+              <option value="pcs">PCS</option>
+              <option value="transcash">Transcash</option>
+              <option value="neosurf">Neosurf</option>
+              <option value="autre">Autre recharge</option>
+            </select>
+
+            <label htmlFor="topic">Votre sujet</label>
+            <select id="topic" value={topic} onChange={(event) => setTopic(event.target.value)} required>
+              <option value="">Choisir une option</option>
+              <option value="comprendre">Comprendre le fonctionnement</option>
+              <option value="securite">Protéger mes informations</option>
+              <option value="assistance">Trouver de l’assistance</option>
+            </select>
+
+            <button className="button button-primary" type="submit">Afficher un conseil</button>
+            {message && <p className="form-message" role="status"><IconAlert width="18" height="18" /> {message}</p>}
+          </form>
+        </div>
+      </section>
     </main>
   )
 }
+
