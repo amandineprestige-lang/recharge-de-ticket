@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom'
+import { IconTicket } from './Icons.jsx'
 
-export default function Logo({ light = false }) {
+export default function Logo() {
   return (
-    <Link to="/" className={`logo ${light ? 'logo-light' : ''}`} aria-label="Portail de démonstration — accueil">
-      <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true">
-        <rect width="32" height="32" rx="9" fill="#0B6B67" />
-        <path d="M9 16.5l5 5 9-11" stroke="#C7F36B" strokeWidth="3.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-      <span>Recharges<b> en sécurité</b></span>
-    </Link>
+    <a className="brand" href="#accueil" aria-label="Recharge le Ticket, accueil">
+      <span className="brand-mark"><IconTicket width="22" height="22" /></span>
+      <span className="brand-name">RECHARGE <b>LE TICKET</b></span>
+    </a>
   )
 }
+
