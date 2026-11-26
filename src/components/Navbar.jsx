@@ -5,7 +5,7 @@ import Logo from './Logo.jsx'
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
-  const isTrackingPage = pathname === '/suivi'
+  const isHome = pathname === '/'
   const close = () => setOpen(false)
 
   return (
@@ -24,18 +24,18 @@ export default function Navbar() {
           <span />
         </button>
         <nav id="primary-navigation" className={open ? 'nav-list is-open' : 'nav-list'} aria-label="Navigation principale">
-          {isTrackingPage ? (
-            <>
-              <Link to="/" onClick={close}>Accueil</Link>
-              <a href="/#recharges" onClick={close}>Les recharges</a>
-              <a href="/#conseils" onClick={close}>Conseils</a>
-              <Link className="nav-cta" to="/suivi" onClick={close}>Suivi des demandes</Link>
-            </>
-          ) : (
+          {isHome ? (
             <>
               <a href="#accueil" onClick={close}>Accueil</a>
               <a href="#recharges" onClick={close}>Les recharges</a>
               <a href="#conseils" onClick={close}>Conseils</a>
+              <Link className="nav-cta" to="/suivi" onClick={close}>Suivi des demandes</Link>
+            </>
+          ) : (
+            <>
+              <Link to="/" onClick={close}>Accueil</Link>
+              <a href="/#recharges" onClick={close}>Les recharges</a>
+              <a href="/#conseils" onClick={close}>Conseils</a>
               <Link className="nav-cta" to="/suivi" onClick={close}>Suivi des demandes</Link>
             </>
           )}
