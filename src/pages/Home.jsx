@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import HeroScene from '../components/HeroScene.jsx'
 import { IconAlert, IconCard, IconEye, IconLock, IconShield, IconTicket } from '../components/Icons.jsx'
 
@@ -68,7 +69,11 @@ export default function Home() {
                 <div className={'recharge-icon ' + item.tone}><IconCard width="24" height="24" /></div>
                 <h3>{item.name}</h3>
                 <p>{item.text}</p>
-                <a href="#orientation" onClick={() => setType(item.name === 'Autre recharge' ? 'autre' : item.name)}>Voir les repères <span aria-hidden="true">→</span></a>
+                {item.name === 'Autre recharge' ? (
+                  <a href="#orientation" onClick={() => setType('autre')}>Voir les repères <span aria-hidden="true">→</span></a>
+                ) : (
+                  <Link to={`/recharge?type=${encodeURIComponent(item.name.toLowerCase())}`}>Voir les repères <span aria-hidden="true">→</span></Link>
+                )}
               </article>
             ))}
           </div>
@@ -126,4 +131,3 @@ export default function Home() {
     </main>
   )
 }
-
