@@ -1,6 +1,6 @@
 # RECHARGE LE TICKET
 
-Site d’information indépendant sur les recharges prépayées, réalisé avec React et Vite. La page d’accueil présente des repères généraux, des conseils de sécurité et un formulaire local d’orientation. Le formulaire n’enregistre et ne transmet aucun choix, et ne demande aucun PIN ni code de recharge.
+Site d’information indépendant sur les recharges prépayées, réalisé avec React, React Router et Vite. L’accueil présente des repères généraux et des conseils de sécurité. La page `/suivi` explique comment contacter le service concerné. Aucun formulaire de demande n’est envoyé ou enregistré, et aucun PIN ni code de recharge n’est demandé.
 
 ## Démarrage
 
@@ -19,4 +19,3 @@ Build de production : \`npm run build\` — aperçu : \`npm run preview\`.
 - \`index.html\` : titre et description du site.
 
 Le site ne vérifie pas la validité d’un ticket et n’est affilié à aucun émetteur mentionné.
-
