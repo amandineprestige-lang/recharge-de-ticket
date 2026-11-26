@@ -138,6 +138,26 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 .tracking-safe-inner h2 { margin-bottom: 5px; font-size: 1.05rem; }
 .tracking-safe-inner p { max-width: 800px; margin: 0; color: #c6d5d4; font-size: .84rem; line-height: 1.65; }
 .tracking-safe-shield { flex: none; margin-left: auto; color: var(--lime); }
+.recharge-info-page { min-height: 65vh; background: #f5f8f7; }
+.recharge-info-hero { padding: 62px 0 38px; }
+.recharge-info-hero .container { max-width: 820px; }
+.recharge-info-hero h1 { margin-bottom: 13px; }
+.recharge-info-hero p:last-child { max-width: 650px; margin: 0; color: var(--muted); font-size: 1.03rem; }
+.recharge-info-section { padding: 0 0 84px; }
+.recharge-info-card { max-width: 700px; padding: clamp(24px,5vw,42px); border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: var(--shadow); }
+.recharge-info-card h2 { margin-bottom: 18px; font-size: clamp(1.35rem,3vw,1.75rem); letter-spacing: -.035em; }
+.recharge-info-card label { display: block; margin-bottom: 8px; color: #405d64; font-size: .84rem; font-weight: 700; }
+.recharge-info-card select { width: 100%; min-height: 50px; padding: 11px 14px; border: 1px solid #cbd7d7; border-radius: 10px; background: #fff; color: var(--ink); }
+.recharge-info-advice { margin-top: 20px; padding: 18px; border-radius: 12px; background: #f2f6f4; }
+.recharge-info-advice p { margin: 0; color: #52696f; font-size: .92rem; line-height: 1.7; }
+.recharge-info-advice .recharge-info-selected { margin-bottom: 6px; color: var(--teal); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.recharge-info-hint { margin: 16px 0 0; color: var(--muted); font-size: .86rem; }
+.recharge-info-warning { display: flex; gap: 12px; align-items: flex-start; margin-top: 22px; padding: 15px; border: 1px solid #f0d7bd; border-radius: 12px; background: #fff9f1; color: #624c38; }
+.recharge-info-warning svg { flex: none; margin-top: 2px; color: #b87339; }
+.recharge-info-warning p { margin: 0; font-size: .84rem; line-height: 1.6; }
+.recharge-info-security { display: flex; align-items: center; gap: 9px; margin-top: 15px; color: var(--teal-dark); font-size: .82rem; font-weight: 650; }
+.recharge-info-security svg { flex: none; }
+.recharge-info-back { margin-top: 23px; }
 .site-footer { padding: 39px 0 17px; background: #0b222d; color: #fff; }
 .footer-main { display: grid; grid-template-columns: 1fr .6fr 1.1fr; gap: 45px; align-items: start; }
 .footer-brand .brand { color: #fff; }
@@ -184,6 +204,8 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   .tracking-hero { padding: 52px 0 40px; }
   .tracking-safe-inner { align-items: flex-start; }
   .tracking-safe-shield { display: none; }
+  .recharge-info-hero { padding: 47px 0 30px; }
+  .recharge-info-section { padding-bottom: 60px; }
 }
 @media (max-width: 500px) {
   .container { width: min(100% - 28px, 1160px); }
