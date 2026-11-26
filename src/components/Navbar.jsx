@@ -1,15 +1,11 @@
 import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo.jsx'
-
-const links = [
-  { href: '#accueil', label: 'Accueil' },
-  { href: '#recharges', label: 'Les recharges' },
-  { href: '#conseils', label: 'Conseils' },
-  { href: '#orientation', label: 'Orientation' },
-]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  const isTrackingPage = pathname === '/suivi'
   const close = () => setOpen(false)
 
   return (
@@ -28,13 +24,23 @@ export default function Navbar() {
           <span />
         </button>
         <nav id="primary-navigation" className={open ? 'nav-list is-open' : 'nav-list'} aria-label="Navigation principale">
-          {links.map((link) => (
-            <a key={link.href} href={link.href} onClick={close}>{link.label}</a>
-          ))}
-          <a className="nav-cta" href="#orientation" onClick={close}>Trouver un repère</a>
+          {isTrackingPage ? (
+            <>
+              <Link to="/" onClick={close}>Accueil</Link>
+              <a href="/#recharges" onClick={close}>Les recharges</a>
+              <a href="/#conseils" onClick={close}>Conseils</a>
+              <Link className="nav-cta" to="/suivi" onClick={close}>Suivi des demandes</Link>
+            </>
+          ) : (
+            <>
+              <a href="#accueil" onClick={close}>Accueil</a>
+              <a href="#recharges" onClick={close}>Les recharges</a>
+              <a href="#conseils" onClick={close}>Conseils</a>
+              <Link className="nav-cta" to="/suivi" onClick={close}>Suivi des demandes</Link>
+            </>
+          )}
         </nav>
       </div>
     </header>
   )
 }
-
