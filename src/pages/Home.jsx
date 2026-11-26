@@ -64,18 +64,33 @@ export default function Home() {
             <p>Retrouvez quelques repères généraux. Pour les conditions propres à un ticket, référez-vous à son émetteur.</p>
           </div>
           <div className="recharge-grid">
-            {rechargeTypes.map((item) => (
-              <article className="recharge-card" key={item.name}>
-                <div className={'recharge-icon ' + item.tone}><IconCard width="24" height="24" /></div>
-                <h3>{item.name}</h3>
-                <p>{item.text}</p>
-                {item.name === 'Autre recharge' ? (
-                  <a href="#orientation" onClick={() => setType('autre')}>Voir les repères <span aria-hidden="true">→</span></a>
-                ) : (
-                  <Link to={`/recharge?type=${encodeURIComponent(item.name.toLowerCase())}`}>Voir les repères <span aria-hidden="true">→</span></Link>
-                )}
-              </article>
-            ))}
+            {rechargeTypes.map((item) => {
+              const contents = (
+                <>
+                  <div className={'recharge-icon ' + item.tone}><IconCard width="24" height="24" /></div>
+                  <h3>{item.name}</h3>
+                  <p>{item.text}</p>
+                  {item.name === 'Autre recharge' ? (
+                    <a href="#orientation" onClick={() => setType('autre')}>Voir les repères <span aria-hidden="true">→</span></a>
+                  ) : (
+                    <span className="recharge-card-action">Voir les détails <span aria-hidden="true">→</span></span>
+                  )}
+                </>
+              )
+
+              return item.name === 'Autre recharge' ? (
+                <article className="recharge-card" key={item.name}>{contents}</article>
+              ) : (
+                <Link
+                  className="recharge-card recharge-card-link"
+                  key={item.name}
+                  to={`/recharge?type=${encodeURIComponent(item.name.toLowerCase())}`}
+                  aria-label={`Voir les détails de ${item.name}`}
+                >
+                  {contents}
+                </Link>
+              )
+            })}
           </div>
           <p className="brand-disclosure">Les noms de produits sont mentionnés uniquement pour orienter les visiteurs. Recharge le Ticket n’est affilié à aucun émetteur.</p>
         </div>
