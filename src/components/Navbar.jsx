@@ -5,12 +5,12 @@ import { IconMenu, IconClose } from './Icons.jsx'
 
 const links = [
   { to: '/', label: 'Accueil', end: true },
-  { to: '/demonstration', label: 'Vérification' },
-  { to: '/#service', label: 'Service' },
-  { to: '/#paiements', label: 'Moyens de paiement' },
-  { to: '/#securite', label: 'Sécurité' },
-  { to: '/#fonctionnement', label: 'Comment ça marche' },
-  { to: '/#assistance', label: 'Assistance' },
+  { to: '/demonstration', label: 'La démonstration' },
+  { to: '/#service', label: 'Notre approche' },
+  { to: '/#paiements', label: 'Types de recharge' },
+  { to: '/#securite', label: 'Conseils' },
+  { to: '/#fonctionnement', label: 'Étapes' },
+  { to: '/#assistance', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -42,7 +42,7 @@ export default function Navbar() {
               <NavLink key={l.to} to={l.to} end={l.end} onClick={close}>{l.label}</NavLink>
             )
           )}
-          <Link to="/demonstration" className="btn btn-primary btn-sm" onClick={close}>Essayer la démo</Link>
+          <Link to="/demonstration" className="btn btn-primary btn-sm" onClick={close}>Voir la démo</Link>
         </nav>
       </div>
     </header>
