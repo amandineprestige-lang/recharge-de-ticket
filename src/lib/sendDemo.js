@@ -7,7 +7,7 @@ const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 export const emailConfigured = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY)
 
 // --- Protection contre les soumissions abusives (côté navigateur) ---
-const KEY = 'ticketsur_submissions'
+const KEY = 'recharges_demo_submissions'
 const COOLDOWN_MS = 60_000      // 1 minute entre deux envois
 const MAX_PER_HOUR = 3
 
