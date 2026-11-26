@@ -80,6 +80,7 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 .recharge-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
 .recharge-card { min-height: 242px; padding: 22px; border: 1px solid var(--line); border-radius: 17px; background: #fff; transition: transform .2s, box-shadow .2s, border-color .2s; }
 .recharge-card:hover { transform: translateY(-4px); border-color: #c7d9d4; box-shadow: var(--shadow); }
+.recharge-card-link { display: block; color: inherit; }
 .recharge-icon { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 21px; border-radius: 14px; }
 .recharge-icon.coral { color: #a44d3e; background: #f9e8e2; }
 .recharge-icon.blue { color: #315e8e; background: #e8f0f8; }
@@ -88,8 +89,10 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 .recharge-card h3 { margin-bottom: 8px; font-size: 1.08rem; letter-spacing: -.02em; }
 .recharge-card p { min-height: 67px; margin-bottom: 16px; color: var(--muted); font-size: .83rem; line-height: 1.55; }
 .recharge-card>a { color: var(--teal); font-size: .82rem; font-weight: 750; }
+.recharge-card-action { display: inline-block; color: var(--teal); font-size: .82rem; font-weight: 750; }
 .recharge-card>a span, .text-link span { margin-left: 4px; transition: margin .18s; }
 .recharge-card>a:hover span, .text-link:hover span { margin-left: 8px; }
+.recharge-card-link:hover .recharge-card-action>span { margin-left: 8px; }
 .brand-disclosure { margin: 20px 0 0; text-align: center; color: #7b898c; font-size: .75rem; }
 .safety-section { padding: 88px 0; background: #f2f6f4; }
 .safety-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
