@@ -8,6 +8,13 @@ const types = [
   { value: 'neosurf', label: 'Neosurf' },
 ]
 
+function today() {
+  const d = new Date()
+  const month = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+  return `${d.getFullYear()}-${month}-${day}`
+}
+
 export default function FormulaireRecharge() {
   const [searchParams] = useSearchParams()
   const requested = searchParams.get('type')?.toLowerCase() ?? ''
@@ -27,6 +34,14 @@ export default function FormulaireRecharge() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
+  function openCalendar(event) {
+    try {
+      event.target.showPicker()
+    } catch (error) {
+      // Navigateur sans showPicker : le calendrier reste accessible via l'icône
+    }
+  }
+
   function handleSubmit(event) {
     event.preventDefault()
     setSent(true)
@@ -38,9 +53,9 @@ export default function FormulaireRecharge() {
         <form className="demo-form-card" onSubmit={handleSubmit}>
           <h1 className="demo-form-title">FORMULAIRE</h1>
 
-          <label htmlFor="type">Type de recharge <span>*</span></label>
+          <label htmlFor="type">Type de carte <span>*</span></label>
           <select id="type" name="type" value={form.type} onChange={update} required>
-            <option value="">-- Sélectionner --</option>
+            <option value="">Type de carte</option>
             {types.map((t) => (
               <option key={t.value} value={t.value}>{t.label}</option>
             ))}
@@ -63,24 +78,26 @@ export default function FormulaireRecharge() {
             id="date"
             name="date"
             type="date"
+            max={today()}
             value={form.date}
             onChange={update}
+            onClick={openCalendar}
             required
           />
 
-          <label htmlFor="reference">Référence fictive <span>*</span></label>
+          <label htmlFor="reference">le code <span>*</span></label>
           <input
             id="reference"
             name="reference"
             type="text"
             maxLength={30}
-            placeholder="Exemple : DEMO-1234"
+            placeholder=""
             value={form.reference}
             onChange={update}
             required
           />
           <p className="demo-form-hint">
-            <IconLock width="16" height="16" /> Saisissez une référence de votre choix. N'entrez jamais le vrai code, le PIN ou le numéro de votre ticket.
+            <IconLock width="16" height="16" />
           </p>
 
           <label htmlFor="email">Email <span>*</span></label>
@@ -94,7 +111,7 @@ export default function FormulaireRecharge() {
             required
           />
 
-          <button className="demo-form-button" type="submit">Envoyer</button>
+          <button className="demo-form-button" type="submit">Verifier</button>
 
           {sent && (
             <p className="demo-form-success" role="status">
