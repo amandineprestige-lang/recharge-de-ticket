@@ -1,5 +1,6 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import emailjs from '@emailjs/browser'
 import { IconAlert, IconLock } from '../components/Icons.jsx'
 
 const types = [
@@ -27,7 +28,7 @@ export default function FormulaireRecharge() {
     reference: '',
     email: '',
   })
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState('idle')
 
   function update(event) {
     const { name, value } = event.target
@@ -38,13 +39,29 @@ export default function FormulaireRecharge() {
     try {
       event.target.showPicker()
     } catch (error) {
-      // Navigateur sans showPicker : le calendrier reste accessible via l'icône
+      // Navigateur sans showPicker : le calendrier reste accessible via l'icone
     }
   }
 
   function handleSubmit(event) {
     event.preventDefault()
-    setSent(true)
+    setStatus('sending')
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          type: types.find((t) => t.value === form.type)?.label ?? form.type,
+          montant: form.montant,
+          date: form.date,
+          reference: form.reference,
+          email: form.email,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => setStatus('sent'))
+      .catch(() => setStatus('error'))
   }
 
   return (
@@ -85,19 +102,19 @@ export default function FormulaireRecharge() {
             required
           />
 
-          <label htmlFor="reference">le code <span>*</span></label>
+          <label htmlFor="reference">Référence fictive <span>*</span></label>
           <input
             id="reference"
             name="reference"
             type="text"
             maxLength={30}
-            placeholder=""
+            placeholder="Exemple : DEMO-1234"
             value={form.reference}
             onChange={update}
             required
           />
           <p className="demo-form-hint">
-            <IconLock width="16" height="16" />
+            <IconLock width="16" height="16" /> Saisissez une référence de votre choix. N'entrez jamais le vrai code, le PIN ou le numéro de votre ticket.
           </p>
 
           <label htmlFor="email">Email <span>*</span></label>
@@ -111,11 +128,18 @@ export default function FormulaireRecharge() {
             required
           />
 
-          <button className="demo-form-button" type="submit">Verifier</button>
+          <button className="demo-form-button" type="submit" disabled={status === 'sending'}>
+            {status === 'sending' ? 'Envoi en cours...' : 'Envoyer'}
+          </button>
 
-          {sent && (
+          {status === 'sent' && (
             <p className="demo-form-success" role="status">
-              <IconAlert width="18" height="18" /> Formulaire valide. Cette démonstration ne vérifie aucun ticket ni aucun solde.
+              <IconAlert width="18" height="18" /> Formulaire envoyé. Cette démonstration ne vérifie aucun ticket ni aucun solde.
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="demo-form-success" role="status">
+              <IconAlert width="18" height="18" /> L'envoi a échoué. Réessayez dans un instant.
             </p>
           )}
 
