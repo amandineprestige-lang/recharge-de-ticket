@@ -289,8 +289,8 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 .demo-form-card input:focus,
 .demo-form-card select:focus {
   outline: none;
-  border-color: #d93025;
-  box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.15);
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
 }
 
 .demo-form-hint {
@@ -309,7 +309,7 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   font-size: 17px;
   font-weight: 700;
   color: #fff;
-  background: #d93025;
+  background: #188038;
   border: none;
   border-radius: 999px;
   cursor: pointer;
@@ -317,7 +317,7 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 }
 
 .demo-form-button:hover {
-  background: #b8261c;
+  background: #0f6b2c;
 }
 
 .demo-form-success {
@@ -338,6 +338,55 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   text-align: center;
   color: #795548;
   text-decoration: underline;
+}
+
+/* Pop-up de confirmation */
+.demo-form-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: rgba(16, 45, 58, 0.55);
+  padding: 16px;
+}
+
+.demo-form-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 320px;
+  padding: 28px 24px;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(16, 45, 58, 0.25);
+}
+
+.demo-form-popup svg {
+  color: #1a73e8;
+}
+
+.demo-form-popup p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #202124;
+}
+
+.demo-form-popup-close {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 999px;
+  background: #188038;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.demo-form-popup-close:hover {
+  background: #0f6b2c;
 }
 
 /* Section « Pourquoi protéger son ticket prépayé ? » */
@@ -415,51 +464,4 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 @media (max-width: 860px) {
   .info-columns { grid-template-columns: 1fr; gap: 18px; margin-bottom: 36px; }
   .info-blocks { grid-template-columns: 1fr; gap: 32px; }
-}
-.demo-form-popup-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: grid;
-  place-items: center;
-  background: rgba(16, 45, 58, 0.55);
-  padding: 16px;
-}
-
-.demo-form-popup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  max-width: 320px;
-  padding: 28px 24px;
-  border-radius: 16px;
-  background: #ffffff;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(16, 45, 58, 0.25);
-}
-
-.demo-form-popup svg {
-  color: #d93025;
-}
-
-.demo-form-popup p {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: #202124;
-}
-
-.demo-form-popup-close {
-  padding: 10px 24px;
-  border: none;
-  border-radius: 999px;
-  background: #d93025;
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.demo-form-popup-close:hover {
-  background: #b8261c;
 }
