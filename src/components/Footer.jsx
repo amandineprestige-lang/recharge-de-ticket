@@ -16,7 +16,9 @@ export default function Footer() {
           <a href={home ? '#conseils' : '/#conseils'}>Conseils de sécurité</a>
           <Link to="/suivi">Suivi des demandes</Link>
         </div>
-        <p className="footer-note">Recharge le Ticket est un service d’information indépendant, sans affiliation aux émetteurs cités. Il ne vérifie pas les tickets et ne demande aucun code secret.</p>
+        <p className="footer-note"> Plateforme rapide & sécurisé pour authentifier vos recharges :
+
+ TRANSCASH - PCS MASTERCARDS - NÉOSURF  </p>
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} Recharge le Ticket</span>
