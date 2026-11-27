@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container footer-main">
         <div className="footer-brand">
           <Logo />
-          <p>Des informations simples et indépendantes sur les recharges prépayées.</p>
+          <p></p>
         </div>
         <div className="footer-links">
           <a href={home ? '#recharges' : '/#recharges'}>Les recharges</a>
