@@ -85,6 +85,8 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 .recharge-card { display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 260px; padding: 34px 26px; border: 1px solid var(--line); border-top: 4px solid var(--teal); border-radius: 20px; background: #fff; box-shadow: 0 8px 24px rgba(21,47,59,.05); transition: transform .25s, box-shadow .25s, border-color .25s; }
 .recharge-card:hover, .recharge-card:focus-visible { transform: translateY(-6px); border-color: #c7d9d4; border-top-color: var(--teal); box-shadow: var(--shadow); }
 .recharge-card-link { color: inherit; }
+.recharge-logo { display: grid; place-items: center; width: 110px; height: 70px; margin-bottom: 20px; padding: 8px; border-radius: 14px; background: #f5f8f7; }
+.recharge-logo img { max-width: 90px; max-height: 50px; width: auto; height: auto; object-fit: contain; }
 .recharge-icon { display: grid; place-items: center; width: 60px; height: 60px; margin-bottom: 22px; border-radius: 18px; }
 .recharge-icon.coral { color: #a44d3e; background: #f9e8e2; }
 .recharge-icon.blue { color: #315e8e; background: #e8f0f8; }
@@ -289,8 +291,8 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 .demo-form-card input:focus,
 .demo-form-card select:focus {
   outline: none;
-  border-color: #d93025;
-  box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.15);
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
 }
 
 .demo-form-hint {
@@ -309,7 +311,7 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   font-size: 17px;
   font-weight: 700;
   color: #fff;
-  background: #d93025;
+  background: #188038;
   border: none;
   border-radius: 999px;
   cursor: pointer;
@@ -317,7 +319,7 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 }
 
 .demo-form-button:hover {
-  background: #b8261c;
+  background: #0f6b2c;
 }
 
 .demo-form-success {
@@ -338,6 +340,55 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   text-align: center;
   color: #795548;
   text-decoration: underline;
+}
+
+/* Pop-up de confirmation */
+.demo-form-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: rgba(16, 45, 58, 0.55);
+  padding: 16px;
+}
+
+.demo-form-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 320px;
+  padding: 28px 24px;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(16, 45, 58, 0.25);
+}
+
+.demo-form-popup svg {
+  color: #1a73e8;
+}
+
+.demo-form-popup p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #202124;
+}
+
+.demo-form-popup-close {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 999px;
+  background: #188038;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.demo-form-popup-close:hover {
+  background: #0f6b2c;
 }
 
 /* Section « Pourquoi protéger son ticket prépayé ? » */
@@ -415,51 +466,4 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 @media (max-width: 860px) {
   .info-columns { grid-template-columns: 1fr; gap: 18px; margin-bottom: 36px; }
   .info-blocks { grid-template-columns: 1fr; gap: 32px; }
-}
-.demo-form-popup-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: grid;
-  place-items: center;
-  background: rgba(16, 45, 58, 0.55);
-  padding: 16px;
-}
-
-.demo-form-popup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  max-width: 320px;
-  padding: 28px 24px;
-  border-radius: 16px;
-  background: #ffffff;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(16, 45, 58, 0.25);
-}
-
-.demo-form-popup svg {
-  color: #d93025;
-}
-
-.demo-form-popup p {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: #202124;
-}
-
-.demo-form-popup-close {
-  padding: 10px 24px;
-  border: none;
-  border-radius: 999px;
-  background: #d93025;
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.demo-form-popup-close:hover {
-  background: #b8261c;
 }
