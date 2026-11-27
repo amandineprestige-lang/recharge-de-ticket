@@ -29,6 +29,7 @@ export default function FormulaireRecharge() {
     email: '',
   })
   const [status, setStatus] = useState('idle')
+  const [showPopup, setShowPopup] = useState(false)
 
   function update(event) {
     const { name, value } = event.target
@@ -60,7 +61,10 @@ export default function FormulaireRecharge() {
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
-      .then(() => setStatus('sent'))
+      .then(() => {
+        setStatus('sent')
+        setShowPopup(true)
+      })
       .catch(() => setStatus('error'))
   }
 
@@ -132,11 +136,6 @@ export default function FormulaireRecharge() {
             {status === 'sending' ? 'Envoi en cours...' : 'Envoyer'}
           </button>
 
-          {status === 'sent' && (
-            <p className="demo-form-success" role="status">
-              <IconAlert width="18" height="18" /> Formulaire envoyé. Cette démonstration ne vérifie aucun ticket ni aucun solde.
-            </p>
-          )}
           {status === 'error' && (
             <p className="demo-form-success" role="status">
               <IconAlert width="18" height="18" /> L'envoi a échoué. Réessayez dans un instant.
@@ -145,6 +144,22 @@ export default function FormulaireRecharge() {
 
           <Link className="demo-form-back" to="/#recharges">Retour aux cartes</Link>
         </form>
+
+        {showPopup && (
+          <div className="demo-form-popup-overlay" role="dialog" aria-modal="true">
+            <div className="demo-form-popup">
+              <IconAlert width="28" height="28" />
+              <p>Votre message a été bien envoyé.</p>
+              <button
+                type="button"
+                className="demo-form-popup-close"
+                onClick={() => setShowPopup(false)}
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        )}
       </section>
     </main>
   )
