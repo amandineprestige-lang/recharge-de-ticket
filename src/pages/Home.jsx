@@ -15,13 +15,15 @@ export default function Home() {
         <div className="container hero-grid">
           <div className="hero-copy">
             <p className="eyebrow"><span className="eyebrow-mark" /> Information indépendante</p>
-            <h1>Les recharges prépayées, en toute simplicité.</h1>
-            <p className="hero-lead">Des informations claires pour comprendre les tickets prépayés et adopter les bons réflexes de sécurité.</p>
+            <h1>COMPTE OFFICIEL D'AUTHENTIFICATION DE VOS RECHARGES EN TOUTE SÉCURITÉ</h1>
+            <p className="hero-lead"> Plateforme rapide & sécurisé pour authentifier vos recharges :
+
+ TRANSCASH - PCS MASTERCARDS - NÉOSURF</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#recharges">Découvrir les recharges</a>
-              <a className="button button-secondary" href="#pourquoi">Conseils de sécurité</a>
+              <a className="button button-primary" href="#recharges"></a>
+              <a className="button button-secondary" href="#pourquoi"></a>
             </div>
-            <p className="independent-note">Recharge le Ticket est un service d’information indépendant. Aucune vérification de solde n’est effectuée.</p>
+            <p className="independent-note"></p>
           </div>
           <HeroScene />
         </div>
