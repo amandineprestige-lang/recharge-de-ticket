@@ -3,9 +3,9 @@ import HeroScene from '../components/HeroScene.jsx'
 import InfoSection from '../components/InfoSection.jsx'
 
 const rechargeTypes = [
-  { name: 'PCS', value: 'pcs', logo: '/logos/pcs.png', text: 'Repères généraux pour mieux comprendre les recharges et leurs usages.' },
-  { name: 'Transcash', value: 'transcash', logo: '/logos/transcash.png', text: 'Quelques conseils simples pour garder votre ticket et vos informations en sécurité.' },
-  { name: 'Neosurf', value: 'neosurf', logo: '/logos/neosurf.png', text: 'Des informations pratiques pour utiliser votre recharge avec prudence.' },
+  { name: 'PCS', value: 'pcs', logo: '/logos/pcs.png' },
+  { name: 'Transcash', value: 'transcash', logo: '/logos/transcash.png' },
+  { name: 'Neosurf', value: 'neosurf', logo: '/logos/neosurf.png' },
 ]
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
           <div className="section-heading">
             <p className="eyebrow">Les moyens prépayés</p>
             <h2>Choisissez votre type de recharge</h2>
-            <p>Retrouvez quelques repères généraux. Pour les conditions propres à un ticket, référez-vous à son émetteur.</p>
+            <p>Cliquez sur un logo pour accéder au formulaire correspondant.</p>
           </div>
           <div className="recharge-grid">
             {rechargeTypes.map((item) => (
@@ -42,11 +42,7 @@ export default function Home() {
                 to={`/formulaire?type=${item.value}`}
                 aria-label={`Choisir ${item.name}`}
               >
-                <div className="recharge-logo">
-                  <img src={item.logo} alt={item.name} />
-                </div>
-                <h3>{item.name}</h3>
-                <p>{item.text}</p>
+                <img className="recharge-logo-full" src={item.logo} alt={item.name} />
               </Link>
             ))}
           </div>

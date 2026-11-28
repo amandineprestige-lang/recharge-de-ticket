@@ -80,19 +80,12 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 .section-heading h2, .safety-copy h2, .orientation-intro h2 { margin-bottom: 13px; font-size: clamp(1.9rem,3.6vw,3rem); line-height: 1.12; letter-spacing: -.045em; }
 .section-heading>p:last-child { margin: 0; color: var(--muted); }
 
-/* Cartes PCS / Transcash / Neosurf */
+/* Cartes PCS / Transcash / Neosurf : logo plein cadre */
 .recharge-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-.recharge-card { display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 260px; padding: 34px 26px; border: 1px solid var(--line); border-top: 4px solid var(--teal); border-radius: 20px; background: #fff; box-shadow: 0 8px 24px rgba(21,47,59,.05); transition: transform .25s, box-shadow .25s, border-color .25s; }
-.recharge-card:hover, .recharge-card:focus-visible { transform: translateY(-6px); border-color: #c7d9d4; border-top-color: var(--teal); box-shadow: var(--shadow); }
+.recharge-card { display: block; aspect-ratio: 4 / 3; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 8px 24px rgba(21,47,59,.05); transition: transform .25s, box-shadow .25s, border-color .25s; }
+.recharge-card:hover, .recharge-card:focus-visible { transform: translateY(-6px); border-color: #c7d9d4; box-shadow: var(--shadow); }
 .recharge-card-link { color: inherit; }
-.recharge-logo { display: grid; place-items: center; width: 110px; height: 70px; margin-bottom: 20px; padding: 8px; border-radius: 14px; background: #f5f8f7; }
-.recharge-logo img { max-width: 90px; max-height: 50px; width: auto; height: auto; object-fit: contain; }
-.recharge-icon { display: grid; place-items: center; width: 60px; height: 60px; margin-bottom: 22px; border-radius: 18px; }
-.recharge-icon.coral { color: #a44d3e; background: #f9e8e2; }
-.recharge-icon.blue { color: #315e8e; background: #e8f0f8; }
-.recharge-icon.green { color: #33745f; background: #e6f2eb; }
-.recharge-card h3 { margin-bottom: 10px; font-size: 1.3rem; letter-spacing: -.02em; }
-.recharge-card p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.6; }
+.recharge-logo-full { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 .text-link span { margin-left: 4px; transition: margin .18s; }
 .text-link:hover span { margin-left: 8px; }
@@ -178,7 +171,6 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   .nav-list { gap: 16px; font-size: .78rem; }
   .hero-grid { min-height: 460px; gap: 12px; }
   .recharge-grid { gap: 16px; }
-  .recharge-card { padding: 28px 18px; }
   .safety-layout, .orientation-layout { gap: 42px; }
 }
 @media (max-width: 760px) {
@@ -204,7 +196,6 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   .quick-points-grid>div+div { border-left: 0; }
   .section, .safety-section { padding: 64px 0; }
   .recharge-grid { grid-template-columns: 1fr; }
-  .recharge-card { min-height: auto; }
   .safety-layout, .orientation-layout { grid-template-columns: 1fr; gap: 28px; }
   .orientation-layout { gap: 30px; }
   .footer-main { grid-template-columns: 1fr 1fr; gap: 25px; }
