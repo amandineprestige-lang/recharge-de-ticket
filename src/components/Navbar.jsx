@@ -34,8 +34,6 @@ export default function Navbar() {
           ) : (
             <>
               <Link to="/" onClick={close}>Accueil</Link>
-              <a href="/#recharges" onClick={close}>Les recharges</a>
-              <a href="/#pourquoi" onClick={close}>Conseils</a>
             </>
           )}
         </nav>
