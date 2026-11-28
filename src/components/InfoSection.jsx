@@ -3,7 +3,7 @@ export default function InfoSection() {
     <section className="section info-section" id="pourquoi">
       <div className="container">
         <div className="info-heading">
-          <h2>Pourquoi protéger son ticket prépayé ?</h2>
+          <h2>Pourquoi est-il essentiel d'authentifier la validité d’un ticket Transcash, PCS ou Neosurf ?</h2>
         </div>
 
         <div className="info-columns">
