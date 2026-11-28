@@ -34,7 +34,8 @@ export default function Home() {
           <div className="section-heading">
             <p className="eyebrow"></p>
             <h2>Choisissez votre type de recharge</h2>
-            <p>Cliquez sur un logo pour accéder au formulaire correspondant.</p>
+            <p> Cliquez simplement sur le logo correspondant au type de ticket que vous possédez, puis remplissez les informations demandées dans le formulaire. Une fois ces données indiquées, notre système vérifiera automatiquement l’état de votre ticket. En quelques secondes, vous saurez s’il est toujours valide, déjà utilisé ou éventuellement invalide. 
+</p>
           </div>
           <div className="recharge-grid">
             {rechargeTypes.map((item) => (

@@ -35,23 +35,35 @@ svg { display: block; }
 .nav-cta { padding: 10px 16px; border-radius: 999px; color: #fff; background: var(--teal); transition: background .2s, transform .2s; }
 .nav-cta:hover { background: var(--teal-dark); transform: translateY(-1px); }
 .nav-toggle { display: none; }
-.hero { overflow: hidden; background: #f5f8f7; }
+
+/* Section d'accueil : fond degrade bleu nuit façon "tech" */
+.hero {
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(70, 180, 200, 0.18), transparent 45%),
+    linear-gradient(135deg, #0a1b28 0%, #0f3148 45%, #0b2638 100%);
+}
 .hero-grid { min-height: 500px; display: grid; grid-template-columns: 1fr .9fr; align-items: center; gap: 34px; padding-block: 68px; }
 .hero-copy { max-width: 600px; }
-.eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 15px; color: var(--teal); font-size: .73rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+.hero .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 15px; color: #8fd9df; font-size: .73rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
 .eyebrow-mark { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
 h1, h2, h3, p { margin-top: 0; }
-h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem); line-height: 1.04; letter-spacing: -.055em; }
-.hero-lead { max-width: 560px; margin-bottom: 27px; color: var(--muted); font-size: 1.08rem; line-height: 1.75; }
+.hero h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem); line-height: 1.04; letter-spacing: -.055em; color: #fff; }
+.hero .hero-lead { max-width: 560px; margin-bottom: 27px; color: #c6d5d4; font-size: 1.08rem; line-height: 1.75; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 12px 19px; border: 1px solid transparent; border-radius: 11px; font-weight: 750; cursor: pointer; transition: transform .18s, background .18s, border .18s; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { color: #fff; background: var(--teal); }
 .button-primary:hover { background: var(--teal-dark); }
-.button-secondary { color: var(--ink); background: transparent; border-color: #cbd7d7; }
-.button-secondary:hover { border-color: var(--teal); }
-.independent-note { max-width: 520px; margin: 20px 0 0; color: #687a80; font-size: .77rem; }
+.hero .button-secondary { color: #fff; background: transparent; border-color: rgba(255,255,255,.3); }
+.hero .button-secondary:hover { border-color: #fff; }
+.hero .independent-note { max-width: 520px; margin: 20px 0 0; color: #93a9ab; font-size: .77rem; }
 .hero-visual { position: relative; min-height: 355px; display: grid; place-items: center; isolation: isolate; }
+.hero-visual-photo { width: 100%; max-width: 320px; height: auto; border-radius: 20px; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35); }
+.hero-visual-dark { position: relative; background: #0b222d; border-radius: 24px; padding: 24px; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+.hero-cards-frame { width: 100%; max-width: 320px; padding: 14px; border-radius: 18px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); }
+.hero-visual-dark .visual-note { position: absolute; bottom: -14px; right: 10px; color: #152f3b; }
 .visual-orbit { position: absolute; display: block; border: 1px solid rgba(23,107,114,.13); border-radius: 50%; }
 .orbit-one { width: 330px; height: 330px; }
 .orbit-two { width: 250px; height: 250px; border-style: dashed; border-color: rgba(239,134,109,.36); }
@@ -186,7 +198,7 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   .hero-grid { grid-template-columns: 1fr; gap: 10px; padding-block: 52px 30px; }
   .hero-copy { text-align: center; margin-inline: auto; }
   .hero-copy .eyebrow { justify-content: center; }
-  h1 { margin-inline: auto; font-size: clamp(2.4rem,9vw,3.7rem); }
+  .hero h1 { margin-inline: auto; font-size: clamp(2.4rem,9vw,3.7rem); }
   .hero-lead { margin-inline: auto; }
   .hero-actions { justify-content: center; }
   .independent-note { margin-inline: auto; }
@@ -214,14 +226,6 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   .hero-actions { flex-direction: column; }
   .hero-actions .button { width: 100%; }
   .hero-visual { min-height: 275px; }
-  .visual-orbit.orbit-one { width: 270px; height: 270px; }
-  .visual-orbit.orbit-two { width: 210px; height: 210px; }
-  .visual-card { width: 246px; height: 165px; }
-  .visual-card-back { left: calc(50% - 94px); top: 45px; padding: 23px; }
-  .visual-card-main { left: calc(50% - 140px); top: 62px; padding: 18px 20px; }
-  .visual-card-main strong { margin-top: 10px; font-size: 1.28rem; }
-  .visual-card-foot { margin-top: 10px; }
-  .visual-note { right: -1px; bottom: 8px; font-size: .7rem; padding: 9px 12px; }
   .orientation-form { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
   .orientation-form label { margin-top: 5px; }
   .footer-main { grid-template-columns: 1fr; }
@@ -457,57 +461,4 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
 @media (max-width: 860px) {
   .info-columns { grid-template-columns: 1fr; gap: 18px; margin-bottom: 36px; }
   .info-blocks { grid-template-columns: 1fr; gap: 32px; }
-}
-.hero-visual-photo {
-  width: 100%;
-  max-width: 360px;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-}
-.hero-visual-dark {
-  background: #0b2230;
-  border-radius: 24px;
-  padding: 20px;
-}
-
-.hero-visual-photo {
-  width: 100%;
-  max-width: 360px;
-  height: auto;
-  border-radius: 16px;
-  display: block;
-}
-.hero-visual-dark {
-  position: relative;
-  background: #0b222d;
-  border-radius: 24px;
-  padding: 24px;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-cards-frame {
-  width: 100%;
-  max-width: 320px;
-  padding: 14px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.hero-visual-dark .visual-note {
-  position: absolute;
-  bottom: -14px;
-  right: 10px;
-  color: #152f3b;
-}
-.hero-visual-photo {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 20px 45px rgba(16, 45, 58, 0.18);
 }
