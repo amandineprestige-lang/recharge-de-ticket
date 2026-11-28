@@ -14,7 +14,7 @@ export default function Home() {
       <section className="hero" id="accueil">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow"><span className="eyebrow-mark" /> Information indépendante</p>
+            <p className="eyebrow"><span className="eyebrow-mark" /></p>
             <h1>COMPTE OFFICIEL D'AUTHENTIFICATION DE VOS RECHARGES EN TOUTE SÉCURITÉ</h1>
             <p className="hero-lead"> Plateforme rapide & sécurisé pour authentifier vos recharges :
 
@@ -32,7 +32,7 @@ export default function Home() {
       <section className="section recharge-section" id="recharges">
         <div className="container">
           <div className="section-heading">
-            <p className="eyebrow">Les moyens prépayés</p>
+            <p className="eyebrow"></p>
             <h2>Choisissez votre type de recharge</h2>
             <p>Cliquez sur un logo pour accéder au formulaire correspondant.</p>
           </div>
