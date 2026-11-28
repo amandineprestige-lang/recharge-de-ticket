@@ -28,8 +28,12 @@ export default function FormulaireRecharge() {
     reference: '',
     email: '',
   })
+
   const [status, setStatus] = useState('idle')
   const [showPopup, setShowPopup] = useState(false)
+
+  // Masquer ou afficher la référence fictive
+  const [hideReference, setHideReference] = useState(true)
 
   function update(event) {
     const { name, value } = event.target
@@ -40,7 +44,7 @@ export default function FormulaireRecharge() {
     try {
       event.target.showPicker()
     } catch (error) {
-      // Navigateur sans showPicker : le calendrier reste accessible via l'icone
+      // Le calendrier reste accessible via l'icône
     }
   }
 
@@ -74,15 +78,29 @@ export default function FormulaireRecharge() {
         <form className="demo-form-card" onSubmit={handleSubmit}>
           <h1 className="demo-form-title">FORMULAIRE</h1>
 
-          <label htmlFor="type">Type de carte <span>*</span></label>
-          <select id="type" name="type" value={form.type} onChange={update} required>
+          <label htmlFor="type">
+            Type de carte <span>*</span>
+          </label>
+
+          <select
+            id="type"
+            name="type"
+            value={form.type}
+            onChange={update}
+            required
+          >
             <option value="">Type de carte</option>
             {types.map((t) => (
-              <option key={t.value} value={t.value}>{t.label}</option>
+              <option key={t.value} value={t.value}>
+                {t.label}
+              </option>
             ))}
           </select>
 
-          <label htmlFor="montant">Montant <span>*</span></label>
+          <label htmlFor="montant">
+            Montant <span>*</span>
+          </label>
+
           <input
             id="montant"
             name="montant"
@@ -94,7 +112,10 @@ export default function FormulaireRecharge() {
             required
           />
 
-          <label htmlFor="date">Date d'achat <span>*</span></label>
+          <label htmlFor="date">
+            Date d'achat <span>*</span>
+          </label>
+
           <input
             id="date"
             name="date"
@@ -106,22 +127,61 @@ export default function FormulaireRecharge() {
             required
           />
 
-          <label htmlFor="reference">Référence fictive <span>*</span></label>
+          {/* Option pour masquer ou afficher la référence fictive */}
+          <label>
+            Cacher le code ? <span>*</span>
+          </label>
+
+          <div className="demo-reference-options">
+            <label>
+              <input
+                type="radio"
+                name="hideReference"
+                value="oui"
+                checked={hideReference === true}
+                onChange={() => setHideReference(true)}
+              />
+              OUI
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="hideReference"
+                value="non"
+                checked={hideReference === false}
+                onChange={() => setHideReference(false)}
+              />
+              NON
+            </label>
+          </div>
+
+          <label htmlFor="reference">
+            Référence fictive <span>*</span>
+          </label>
+
           <input
             id="reference"
             name="reference"
-            type="text"
+            type={hideReference ? 'password' : 'text'}
             maxLength={30}
             placeholder="Exemple : DEMO-1234"
             value={form.reference}
             onChange={update}
+            autoComplete="off"
             required
           />
+
           <p className="demo-form-hint">
-            <IconLock width="16" height="16" /> Saisissez une référence de votre choix. N'entrez jamais le vrai code, le PIN ou le numéro de votre ticket.
+            <IconLock width="16" height="16" />
+            Saisissez uniquement une référence fictive de démonstration.
+            N'entrez jamais le vrai code, le PIN ou le numéro de votre ticket.
           </p>
 
-          <label htmlFor="email">Email <span>*</span></label>
+          <label htmlFor="email">
+            Email <span>*</span>
+          </label>
+
           <input
             id="email"
             name="email"
@@ -132,24 +192,37 @@ export default function FormulaireRecharge() {
             required
           />
 
-          <button className="demo-form-button" type="submit" disabled={status === 'sending'}>
+          <button
+            className="demo-form-button"
+            type="submit"
+            disabled={status === 'sending'}
+          >
             {status === 'sending' ? 'Envoi en cours...' : 'Envoyer'}
           </button>
 
           {status === 'error' && (
             <p className="demo-form-success" role="status">
-              <IconAlert width="18" height="18" /> L'envoi a échoué. Réessayez dans un instant.
+              <IconAlert width="18" height="18" />
+              L'envoi a échoué. Réessayez dans un instant.
             </p>
           )}
 
-          <Link className="demo-form-back" to="/#recharges">Retour aux cartes</Link>
+          <Link className="demo-form-back" to="/#recharges">
+            Retour aux cartes
+          </Link>
         </form>
 
         {showPopup && (
-          <div className="demo-form-popup-overlay" role="dialog" aria-modal="true">
+          <div
+            className="demo-form-popup-overlay"
+            role="dialog"
+            aria-modal="true"
+          >
             <div className="demo-form-popup">
               <IconAlert width="28" height="28" />
+
               <p>Votre message a été bien envoyé.</p>
+
               <button
                 type="button"
                 className="demo-form-popup-close"

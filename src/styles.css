@@ -488,3 +488,25 @@ h1, h2, h3, p { margin-top: 0; }
   .info-columns { grid-template-columns: 1fr; gap: 18px; margin-bottom: 36px; }
   .info-blocks { grid-template-columns: 1fr; gap: 32px; }
 }
+.demo-reference-options {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  margin: 8px 0 20px;
+}
+
+.demo-reference-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.demo-reference-options input[type="radio"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #555;
+  cursor: pointer;
+}
