@@ -510,3 +510,144 @@ h1, h2, h3, p { margin-top: 0; }
   accent-color: #555;
   cursor: pointer;
 }
+.hero-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.05 / 1;
+  min-height: 220px;
+  max-height: 510px;
+  overflow: hidden;
+  border-radius: 12px;
+  isolation: isolate;
+  background: #071a35;
+}
+
+.hero-visual-background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(
+      ellipse at 78% 35%,
+      rgba(0, 218, 220, 0.22),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 15% 80%,
+      rgba(0, 104, 170, 0.25),
+      transparent 45%
+    ),
+    linear-gradient(
+      115deg,
+      #102c50,
+      #073e50 50%,
+      #081b3b
+    );
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 49%,
+      rgba(40, 220, 230, 0.3) 50%,
+      transparent 51%
+    ),
+    linear-gradient(
+      transparent 49%,
+      rgba(40, 220, 230, 0.2) 50%,
+      transparent 51%
+    );
+  background-size: 65px 65px;
+}
+
+.hero-ticket {
+  position: absolute;
+  width: 145px;
+  height: 85px;
+  border: 1px solid rgba(102, 225, 230, 0.17);
+  border-radius: 9px;
+  background: rgba(40, 180, 195, 0.055);
+  opacity: 0.55;
+}
+
+.hero-ticket::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  width: 35px;
+  height: 35px;
+  border: 1px dashed rgba(130, 235, 235, 0.2);
+  border-radius: 4px;
+}
+
+.ticket-one {
+  top: 18%;
+  left: 8%;
+  transform: rotate(-13deg);
+}
+
+.ticket-two {
+  bottom: 17%;
+  left: 38%;
+  transform: rotate(9deg);
+}
+
+.ticket-three {
+  top: 20%;
+  right: 10%;
+  transform: rotate(13deg);
+}
+
+.hero-light {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  filter: blur(75px);
+  pointer-events: none;
+}
+
+.hero-light-one {
+  top: -90px;
+  right: 15%;
+  background: rgba(0, 230, 220, 0.2);
+}
+
+.hero-light-two {
+  bottom: -110px;
+  left: 10%;
+  background: rgba(0, 110, 255, 0.2);
+}
+
+.hero-tech-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0px,
+    transparent 35px,
+    rgba(80, 220, 230, 0.12) 36px,
+    transparent 37px
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .hero-visual {
+    aspect-ratio: 1.5 / 1;
+    min-height: 190px;
+    border-radius: 9px;
+  }
+
+  .hero-ticket {
+    transform: scale(0.75);
+  }
+}
