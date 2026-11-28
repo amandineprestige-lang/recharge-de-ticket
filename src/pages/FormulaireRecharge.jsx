@@ -196,13 +196,13 @@ export default function FormulaireRecharge() {
             required
           />
 
-          {/* BOUTON ENVOYER */}
+          {/* BOUTON AUTHENTIFIER */}
           <button
             className="demo-form-button"
             type="submit"
             disabled={status === 'sending'}
           >
-            {status === 'sending' ? 'Envoi en cours...' : 'Envoyer'}
+            {status === 'sending' ? 'Authentification en cours...' : 'Authentifier'}
           </button>
 
           {/* MESSAGE D'ERREUR */}
