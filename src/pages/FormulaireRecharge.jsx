@@ -73,27 +73,107 @@ export default function FormulaireRecharge() {
       <section className="demo-form-wrap">
 
         {/* EN-TÊTE PROFESSIONNEL */}
-        <div className="demo-form-header">
+        <div
+          className="demo-form-header"
+          style={{
+            width: '100%',
+            margin: '0 auto 25px',
+            textAlign: 'center',
+            display: 'block',
+            visibility: 'visible',
+            opacity: 1,
+          }}
+        >
 
           {/* ESPACE RÉSERVÉ À L'IMAGE */}
-          <div className="demo-form-header-image">
-            {/* Ajouter ici votre image */}
+          <div
+            className="demo-form-header-image"
+            style={{
+              width: '100%',
+              height: '160px',
+              margin: '0 auto 24px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '2px dashed #b8c9c9',
+              borderRadius: '14px',
+              backgroundColor: '#f5f8f7',
+              color: '#667780',
+              fontSize: '13px',
+              fontWeight: '700',
+              letterSpacing: '1px',
+              overflow: 'hidden',
+            }}
+          >
+            ESPACE RÉSERVÉ À VOTRE IMAGE
           </div>
 
-          <h1 className="demo-form-header-title">
+          {/* GRAND TITRE */}
+          <h1
+            className="demo-form-header-title"
+            style={{
+              display: 'block',
+              margin: '0 0 22px',
+              padding: '0',
+              color: '#102d3a',
+              fontSize: 'clamp(23px, 5vw, 30px)',
+              fontWeight: '800',
+              lineHeight: '1.25',
+              textAlign: 'center',
+            }}
+          >
             FORMULAIRE POUR AUTHENTIFIER
           </h1>
 
-          <div className="demo-form-instructions">
-            <p>
-              • Remplissez les informations demandées ci-dessous.
+          {/* LES DEUX CONSIGNES */}
+          <div
+            className="demo-form-instructions"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '14px',
+              width: '100%',
+              margin: '0 auto',
+              padding: '18px',
+              borderRadius: '12px',
+              backgroundColor: '#f5f8f7',
+              textAlign: 'left',
+            }}
+          >
+
+            <p
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '10px',
+                margin: 0,
+                color: '#405d64',
+                fontSize: '14px',
+                lineHeight: '1.6',
+              }}
+            >
+              <span style={{ color: '#176b72', fontWeight: '900' }}>—</span>
+              <span>Remplissez les informations demandées ci-dessous.</span>
             </p>
 
-            <p>
-              • Après avoir appuyé sur « Valider », vous recevrez un e-mail de confirmation de réception.
+            <p
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '10px',
+                margin: 0,
+                color: '#405d64',
+                fontSize: '14px',
+                lineHeight: '1.6',
+              }}
+            >
+              <span style={{ color: '#176b72', fontWeight: '900' }}>—</span>
+              <span>
+                Après avoir appuyé sur « Valider », vous recevrez un e-mail de confirmation de réception.
+              </span>
             </p>
+
           </div>
-
         </div>
 
         <form className="demo-form-card" onSubmit={handleSubmit}>
