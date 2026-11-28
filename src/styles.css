@@ -465,3 +465,16 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   border-radius: 20px;
   box-shadow: var(--shadow);
 }
+.hero-visual-dark {
+  background: #0b2230;
+  border-radius: 24px;
+  padding: 20px;
+}
+
+.hero-visual-photo {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
