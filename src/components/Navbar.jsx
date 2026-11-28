@@ -27,8 +27,6 @@ export default function Navbar() {
           {isHome ? (
             <>
               <a href="#accueil" onClick={close}>Accueil</a>
-              <a href="#recharges" onClick={close}>Les recharges</a>
-              <a href="#pourquoi" onClick={close}>Conseils</a>
               <a className="nav-cta" href="#recharges" onClick={close}>Vérification</a>
             </>
           ) : (
