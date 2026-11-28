@@ -12,15 +12,12 @@ export default function Footer() {
           <p></p>
         </div>
         <div className="footer-links">
-          <a href={home ? '#recharges' : '/#recharges'}>Les recharges</a>
-          <a href={home ? '#conseils' : '/#conseils'}>Conseils de sécurité</a>
         </div>
         <p className="footer-note"> Plateforme rapide & sécurisé pour authentifier vos recharges :
 
  TRANSCASH - PCS MASTERCARDS - NÉOSURF  </p>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} Recharge le Ticket</span>
         <a href={home ? '#accueil' : '/'}>{home ? 'Retour en haut ↑' : 'Accueil'}</a>
       </div>
     </footer>
