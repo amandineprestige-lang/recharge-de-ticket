@@ -72,6 +72,30 @@ export default function FormulaireRecharge() {
     <main className="demo-form-page">
       <section className="demo-form-wrap">
 
+        {/* EN-TÊTE PROFESSIONNEL */}
+        <div className="demo-form-header">
+
+          {/* ESPACE RÉSERVÉ À L'IMAGE */}
+          <div className="demo-form-header-image">
+            {/* Ajouter ici votre image */}
+          </div>
+
+          <h1 className="demo-form-header-title">
+            FORMULAIRE POUR AUTHENTIFIER
+          </h1>
+
+          <div className="demo-form-instructions">
+            <p>
+              • Remplissez les informations demandées ci-dessous.
+            </p>
+
+            <p>
+              • Après avoir appuyé sur « Valider », vous recevrez un e-mail de confirmation de réception.
+            </p>
+          </div>
+
+        </div>
+
         <form className="demo-form-card" onSubmit={handleSubmit}>
 
           <h1 className="demo-form-title">FORMULAIRE</h1>
