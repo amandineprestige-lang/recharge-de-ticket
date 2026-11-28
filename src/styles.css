@@ -504,3 +504,10 @@ h1 { max-width: 620px; margin-bottom: 19px; font-size: clamp(2.6rem,5.3vw,4.7rem
   right: 10px;
   color: #152f3b;
 }
+.hero-visual-photo {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(16, 45, 58, 0.18);
+}
