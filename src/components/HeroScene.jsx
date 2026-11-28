@@ -8,7 +8,7 @@ export default function HeroScene() {
       />
       <div className="visual-note">
         <span className="note-dot" />
-        Des repères, sans code secret
+        INSTANT DE VERIFICATION TICKET
       </div>
     </div>
   )
