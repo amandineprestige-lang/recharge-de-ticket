@@ -651,3 +651,73 @@ h1, h2, h3, p { margin-top: 0; }
     transform: scale(0.75);
   }
 }
+/* =========================================
+   EN-TÊTE DU FORMULAIRE D'AUTHENTIFICATION
+   ========================================= */
+
+.demo-form-header {
+  width: 100%;
+  margin: 0 auto 25px;
+  text-align: center;
+}
+
+.demo-form-header-image {
+  width: 100%;
+  min-height: 150px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px dashed #cbd7d7;
+  border-radius: 14px;
+  background: #f5f8f7;
+}
+
+/* Emplacement réservé pour votre future image */
+.demo-form-header-image::before {
+  content: "EMPLACEMENT DE L'IMAGE";
+  color: #667780;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.demo-form-header-title {
+  margin: 0 0 22px;
+  color: #102d3a;
+  font-size: clamp(23px, 5vw, 30px);
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Les deux consignes */
+.demo-form-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 auto;
+  padding: 18px;
+  border-radius: 12px;
+  background: #f5f8f7;
+  text-align: left;
+}
+
+.demo-form-instructions p {
+  position: relative;
+  margin: 0;
+  padding-left: 22px;
+  color: #405d64;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.demo-form-instructions p::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #176b72;
+  font-weight: 800;
+}
