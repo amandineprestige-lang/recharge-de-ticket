@@ -48,7 +48,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <p className="brand-disclosure">Les marques et logos appartiennent à leurs propriétaires respectifs. Recharge le Ticket n’est affilié à aucun émetteur.</p>
+          <p className="brand-disclosure">.</p>
         </div>
       </section>
 
