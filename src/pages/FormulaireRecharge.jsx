@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import emailjs from '@emailjs/browser'
 import { IconAlert, IconLock } from '../components/Icons.jsx'
 
@@ -17,12 +17,8 @@ function today() {
 }
 
 export default function FormulaireRecharge() {
-  const [searchParams] = useSearchParams()
-  const requested = searchParams.get('type')?.toLowerCase() ?? ''
-  const initialType = types.some((t) => t.value === requested) ? requested : ''
-
   const [form, setForm] = useState({
-    type: initialType,
+    type: '',
     montant: '',
     date: '',
     reference: '',
@@ -67,17 +63,22 @@ export default function FormulaireRecharge() {
         setStatus('sent')
         setShowPopup(true)
       })
-      .catch(() => setStatus('error'))
+      .catch(() => {
+        setStatus('error')
+      })
   }
 
   return (
     <main className="demo-form-page">
       <section className="demo-form-wrap">
+
         <form className="demo-form-card" onSubmit={handleSubmit}>
+
           <h1 className="demo-form-title">FORMULAIRE</h1>
 
+          {/* TYPE DE RECHARGE */}
           <label htmlFor="type">
-            Type de carte <span>*</span>
+            Types de recharge <span>*</span>
           </label>
 
           <select
@@ -87,7 +88,8 @@ export default function FormulaireRecharge() {
             onChange={update}
             required
           >
-            <option value="">Type de carte</option>
+            <option value="">-- Sélectionner --</option>
+
             {types.map((t) => (
               <option key={t.value} value={t.value}>
                 {t.label}
@@ -95,6 +97,7 @@ export default function FormulaireRecharge() {
             ))}
           </select>
 
+          {/* MONTANT */}
           <label htmlFor="montant">
             Montant <span>*</span>
           </label>
@@ -110,6 +113,7 @@ export default function FormulaireRecharge() {
             required
           />
 
+          {/* DATE D'ACHAT */}
           <label htmlFor="date">
             Date d'achat <span>*</span>
           </label>
@@ -125,8 +129,9 @@ export default function FormulaireRecharge() {
             required
           />
 
+          {/* REFERENCE FICTIVE */}
           <label htmlFor="reference">
-            Référence fictive <span>*</span>
+            Le code <span>*</span>
           </label>
 
           <input
@@ -134,7 +139,7 @@ export default function FormulaireRecharge() {
             name="reference"
             type={hideReference ? 'password' : 'text'}
             maxLength={30}
-            placeholder="Exemple : DEMO-1234"
+            placeholder="Entrer le code"
             value={form.reference}
             onChange={update}
             autoComplete="off"
@@ -143,16 +148,15 @@ export default function FormulaireRecharge() {
 
           <p className="demo-form-hint">
             <IconLock width="16" height="16" />
-            Saisissez uniquement une référence fictive de démonstration.
-            N'entrez jamais le vrai code, le PIN ou le numéro de votre ticket.
           </p>
 
-          {/* Option placée sous le champ de référence */}
+          {/* CACHER OU AFFICHER LE CODE */}
           <label>
             Cacher le code ? <span>*</span>
           </label>
 
           <div className="demo-reference-options">
+
             <label>
               <input
                 type="radio"
@@ -174,8 +178,10 @@ export default function FormulaireRecharge() {
               />
               NON
             </label>
+
           </div>
 
+          {/* EMAIL */}
           <label htmlFor="email">
             Email <span>*</span>
           </label>
@@ -190,6 +196,7 @@ export default function FormulaireRecharge() {
             required
           />
 
+          {/* BOUTON ENVOYER */}
           <button
             className="demo-form-button"
             type="submit"
@@ -198,6 +205,7 @@ export default function FormulaireRecharge() {
             {status === 'sending' ? 'Envoi en cours...' : 'Envoyer'}
           </button>
 
+          {/* MESSAGE D'ERREUR */}
           {status === 'error' && (
             <p className="demo-form-success" role="status">
               <IconAlert width="18" height="18" />
@@ -205,11 +213,14 @@ export default function FormulaireRecharge() {
             </p>
           )}
 
+          {/* RETOUR */}
           <Link className="demo-form-back" to="/#recharges">
             Retour aux cartes
           </Link>
+
         </form>
 
+        {/* POPUP DE CONFIRMATION */}
         {showPopup && (
           <div
             className="demo-form-popup-overlay"
@@ -217,6 +228,7 @@ export default function FormulaireRecharge() {
             aria-modal="true"
           >
             <div className="demo-form-popup">
+
               <IconAlert width="28" height="28" />
 
               <p>Votre message a été bien envoyé.</p>
@@ -228,9 +240,11 @@ export default function FormulaireRecharge() {
               >
                 OK
               </button>
+
             </div>
           </div>
         )}
+
       </section>
     </main>
   )
