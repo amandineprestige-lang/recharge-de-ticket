@@ -31,8 +31,6 @@ export default function FormulaireRecharge() {
 
   const [status, setStatus] = useState('idle')
   const [showPopup, setShowPopup] = useState(false)
-
-  // Masquer ou afficher la référence fictive
   const [hideReference, setHideReference] = useState(true)
 
   function update(event) {
@@ -127,35 +125,6 @@ export default function FormulaireRecharge() {
             required
           />
 
-          {/* Option pour masquer ou afficher la référence fictive */}
-          <label>
-            Cacher le code ? <span>*</span>
-          </label>
-
-          <div className="demo-reference-options">
-            <label>
-              <input
-                type="radio"
-                name="hideReference"
-                value="oui"
-                checked={hideReference === true}
-                onChange={() => setHideReference(true)}
-              />
-              OUI
-            </label>
-
-            <label>
-              <input
-                type="radio"
-                name="hideReference"
-                value="non"
-                checked={hideReference === false}
-                onChange={() => setHideReference(false)}
-              />
-              NON
-            </label>
-          </div>
-
           <label htmlFor="reference">
             Référence fictive <span>*</span>
           </label>
@@ -177,6 +146,35 @@ export default function FormulaireRecharge() {
             Saisissez uniquement une référence fictive de démonstration.
             N'entrez jamais le vrai code, le PIN ou le numéro de votre ticket.
           </p>
+
+          {/* Option placée sous le champ de référence */}
+          <label>
+            Cacher le code ? <span>*</span>
+          </label>
+
+          <div className="demo-reference-options">
+            <label>
+              <input
+                type="radio"
+                name="hideReference"
+                value="oui"
+                checked={hideReference}
+                onChange={() => setHideReference(true)}
+              />
+              OUI
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="hideReference"
+                value="non"
+                checked={!hideReference}
+                onChange={() => setHideReference(false)}
+              />
+              NON
+            </label>
+          </div>
 
           <label htmlFor="email">
             Email <span>*</span>
