@@ -14,7 +14,6 @@ export default function Footer() {
         <div className="footer-links">
           <a href={home ? '#recharges' : '/#recharges'}>Les recharges</a>
           <a href={home ? '#conseils' : '/#conseils'}>Conseils de sécurité</a>
-          <Link to="/suivi">Suivi des demandes</Link>
         </div>
         <p className="footer-note"> Plateforme rapide & sécurisé pour authentifier vos recharges :
 
