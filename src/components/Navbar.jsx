@@ -36,7 +36,6 @@ export default function Navbar() {
               <Link to="/" onClick={close}>Accueil</Link>
               <a href="/#recharges" onClick={close}>Les recharges</a>
               <a href="/#conseils" onClick={close}>Conseils</a>
-              <Link className="nav-cta" to="/suivi" onClick={close}>Suivi des demandes</Link>
             </>
           )}
         </nav>
